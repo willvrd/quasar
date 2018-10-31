@@ -1,7 +1,16 @@
 <template>
   <q-page class="flex flex-center">
-    <img alt="Quasar logo" src="~assets/quasar-logo-full.svg">
+
+    <div class="row">
+      <img alt="Quasar logo" src="~assets/quasar-logo-full.svg">
+    </div>
+
+    <div class="row">
+      <q-input v-model="text" float-label="Search" :value="queryText"/>
+    </div>
+
   </q-page>
+
 </template>
 
 <style>
