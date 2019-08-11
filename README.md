@@ -1,6 +1,6 @@
 # Quasar App (base)
 
-Testing
+Testing - William Verde
 
 ## Install the dependencies
 ```bash

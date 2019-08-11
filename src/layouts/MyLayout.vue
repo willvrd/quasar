@@ -13,7 +13,7 @@
         </q-btn>
 
         <q-toolbar-title>
-          Quasar App
+          William Verde - Testing
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
@@ -81,6 +81,28 @@
             <q-item-label caption>@QuasarFramework</q-item-label>
           </q-item-section>
         </q-item>
+
+        <q-separator spaced />
+        <q-item-label header>Green Links</q-item-label>
+        <q-item clickable tag="a" target="_blank" href="https://ingwilliamverde.wordpress.com/">
+          <q-item-section avatar>
+            <q-icon name="web" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Website</q-item-label>
+            <q-item-label caption>ingwilliamverde.wordpress.com</q-item-label>
+          </q-item-section>
+        </q-item>
+        <q-item clickable tag="a" target="_blank" href="https://github.com/willvrd/">
+          <q-item-section avatar>
+            <q-icon name="school" />
+          </q-item-section>
+          <q-item-section>
+            <q-item-label>Github</q-item-label>
+            <q-item-label caption>github.com/willvrd</q-item-label>
+          </q-item-section>
+        </q-item>
+
       </q-list>
     </q-drawer>
 
