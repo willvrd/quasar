@@ -47,7 +47,8 @@ module.exports = function (ctx) {
         'QItemSection',
         'QItemLabel',
         'QInput',
-        'QImg'
+        'QImg',
+        'QParallax'
       ],
 
       directives: [
