@@ -2,7 +2,7 @@
   "name": "base",
   "version": "0.0.1",
   "description": "Testing",
-  "productName": "Quasar App",
+  "productName": "Green App",
   "cordovaId": "org.cordova.quasar.app",
   "author": "William Verde <williamverde10@gmail.com>",
   "private": true,

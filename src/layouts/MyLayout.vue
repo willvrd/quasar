@@ -16,7 +16,15 @@
           William Verde - Testing
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>Green v{{ $q.version }}</div>
+        <div class="golden-green q-ml-md rounded-borders">
+           <q-img
+            alt="Green logo"
+            src="assets/golden-tipo1.jpg"
+            style="width:35px;"
+            >
+            </q-img>
+        </div>
       </q-toolbar>
     </q-header>
 
