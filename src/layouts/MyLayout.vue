@@ -82,7 +82,8 @@
           </q-item-section>
         </q-item>
 
-        <q-separator spaced />
+        <!-- <q-separator spaced /> -->
+
         <q-item-label header>Green Links</q-item-label>
         <q-item clickable tag="a" target="_blank" href="https://ingwilliamverde.wordpress.com/">
           <q-item-section avatar>
