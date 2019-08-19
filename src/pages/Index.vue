@@ -1,7 +1,7 @@
 <template>
   <q-page class="index">
 
-    <q-parallax :speed="0.5" class="window-height">
+    <q-parallax :speed="0.5" class="">
       <template v-slot:media>
         <img src="assets/parallax/street.jpg">
       </template>
@@ -26,10 +26,32 @@
 
     </q-parallax>
 
+    <div id="results" class="row q-pa-md q-col-gutter-lg">
+
+        <div class="col-xs-12 col-sm-4 col-md-3" v-for="(item, index) in videos" :key="index">
+          <q-card class="my-card">
+            <img src="https://cdn.quasar.dev/img/parallax2.jpg">
+
+            <q-card-section>
+              <div class="text-h6">Our Changing Planet</div>
+              <div class="text-subtitle2">by John Doe</div>
+            </q-card-section>
+          </q-card>
+        </div>
+
+        <div class="clearfix"></div>
+      </div>
+
   </q-page>
 </template>
 
-<style>
+<style lang="stylus" scoped>
+
+.my-card
+  width 100%
+  max-width 250px
+  margin auto
+
 </style>
 
 <script>
@@ -37,7 +59,8 @@ export default {
   name: 'PageIndex',
   data () {
     return {
-      textSearch: ''
+      textSearch: '',
+      videos: ['1', '2', '3', '3', '3', '3']
     }
   },
   computed: {
