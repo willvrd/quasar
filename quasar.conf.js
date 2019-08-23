@@ -51,7 +51,8 @@ module.exports = function (ctx) {
         'QParallax',
         'QCard',
         'QCardSection',
-        'QCardActions'
+        'QCardActions',
+        'QAjaxBar'
       ],
 
       directives: [

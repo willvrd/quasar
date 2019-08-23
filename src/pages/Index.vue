@@ -1,5 +1,5 @@
 <template>
-  <q-page class="index">
+  <q-page class="page-index">
 
     <q-parallax :speed="0.5" class="">
       <template v-slot:media>
@@ -15,13 +15,8 @@
         label="Search..."
         color="white"
         v-model="textSearch"
-        error-message="Please use minimum 3 characters"
-        :error="isValid"
-        >
-          <template v-slot:prepend>
-              <q-icon name="search" style="color:white" />
-          </template>
-        </q-input>
+        @keydown.enter="runSearch"
+        />
       </div>
 
     </q-parallax>
@@ -30,17 +25,27 @@
 
         <div class="col-xs-12 col-sm-4 col-md-3" v-for="(item, index) in videos" :key="index">
           <q-card class="my-card">
-            <img src="https://cdn.quasar.dev/img/parallax2.jpg">
+            <img :src="item.thumbnails.medium.url" :alt="item.title">
 
             <q-card-section>
-              <div class="text-h6">Our Changing Planet</div>
-              <div class="text-subtitle2">by John Doe</div>
+              <div class="text-h6 text-uppercase">{{item.title}}</div>
+              <div class="text-caption">Channel: {{item.channelTitle}}</div>
             </q-card-section>
           </q-card>
         </div>
 
         <div class="clearfix"></div>
-      </div>
+    </div>
+
+    <div class="q-pa-md">
+      <q-ajax-bar
+        ref="bar"
+        position="bottom"
+        color="primary"
+        size="10px"
+        skip-hijack
+      />
+    </div>
 
   </q-page>
 </template>
@@ -55,18 +60,39 @@
 </style>
 
 <script>
+import youtube from '../providers/youtube'
+
 export default {
   name: 'PageIndex',
   data () {
     return {
-      textSearch: '',
-      videos: ['1', '2', '3', '3', '3', '3']
+      textSearch: 'I like golden retrivers',
+      videos: []
     }
   },
   computed: {
     isValid () {
       return this.textSearch.length <= 3
     }
+  },
+  methods: {
+    runSearch () {
+      const bar = this.$refs.bar
+      bar.start()
+
+      youtube(this.textSearch).then(results => {
+        console.log(results)
+        this.videos = results
+        this.$refs.bar.stop()
+      })
+        .catch(error => {
+          console.error(error)
+        })
+    }
+  },
+  mounted () {
+    this.runSearch()
   }
+
 }
 </script>
