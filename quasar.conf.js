@@ -57,7 +57,8 @@ module.exports = function (ctx) {
         'QCard',
         'QCardSection',
         'QCardActions',
-        'QAjaxBar'
+        'QAjaxBar',
+        'QBanner'
       ],
 
       directives: [

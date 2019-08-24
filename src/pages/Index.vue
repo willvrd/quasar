@@ -21,7 +21,7 @@
 
     </q-parallax>
 
-    <div id="results" class="row q-pa-md q-col-gutter-lg">
+    <div id="results" v-if="videos.length>0" class="row q-pa-md q-col-gutter-lg">
 
         <div class="col-xs-12 col-sm-4 col-md-3" v-for="(item, index) in videos" :key="index">
           <q-card class="my-card">
@@ -34,7 +34,15 @@
           </q-card>
         </div>
 
-        <div class="clearfix"></div>
+    </div>
+
+    <div v-else>
+      <q-banner inline-actions class="text-white bg-red">
+        No se encontró una guayaba. Intente buscar otra guayaba
+         <template v-slot:avatar>
+          <q-icon name="pets" color="white" />
+        </template>
+      </q-banner>
     </div>
 
     <div class="q-pa-md">
@@ -81,7 +89,6 @@ export default {
       bar.start()
 
       youtube(this.textSearch).then(results => {
-        console.log(results)
         this.videos = results
         this.$refs.bar.stop()
       })
@@ -91,7 +98,7 @@ export default {
           this.$q.notify({
             color:    'negative',
             icon:     'report_problem',
-            message:  'Error - This is suspicious',
+            message:  'Error en la guayaba',
             actions: [{ icon: 'close', color: 'white' }]
           })
         })
