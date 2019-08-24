@@ -87,6 +87,13 @@ export default {
       })
         .catch(error => {
           console.error(error)
+          this.$refs.bar.stop()
+          this.$q.notify({
+            color:    'negative',
+            icon:     'report_problem',
+            message:  'Error - This is suspicious',
+            actions: [{ icon: 'close', color: 'white' }]
+          })
         })
     }
   },
