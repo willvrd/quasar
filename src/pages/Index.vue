@@ -66,7 +66,7 @@ export default {
   name: 'PageIndex',
   data () {
     return {
-      textSearch: 'I like golden retrivers',
+      textSearch: 'I like golden retrievers',
       videos: []
     }
   },
@@ -91,6 +91,7 @@ export default {
     }
   },
   mounted () {
+    // console.log(process.env)
     this.runSearch()
   }
 

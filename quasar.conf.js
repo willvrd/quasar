@@ -1,6 +1,11 @@
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
 
+var webpack = require('webpack')
+var path = require('path')
+
+const envparser = require('./env/envparser')
+
 module.exports = function (ctx) {
   return {
     // app boot file (/src/boot)
@@ -69,12 +74,14 @@ module.exports = function (ctx) {
 
     build: {
       scopeHoisting: true,
+      env: envparser(),
       // vueRouterMode: 'history',
       // vueCompiler: true,
       // gzip: true,
       // analyze: true,
       // extractCSS: false,
       extendWebpack (cfg) {
+        /*
         cfg.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
@@ -84,6 +91,15 @@ module.exports = function (ctx) {
             formatter: require('eslint').CLIEngine.getFormatter('stylish')
           }
         })
+        */
+
+         // Make our helper function Global, for example to use it in js files you should call it env('MY_VALUE')
+        cfg.plugins.push(
+          new webpack.ProvidePlugin({
+            env: [path.resolve(__dirname, 'env/env'), 'default']
+          })
+        )
+
       }
     },
 
