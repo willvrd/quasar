@@ -19,6 +19,19 @@
         />
       </div>
 
+      <q-btn
+      :loading="loading4"
+      size="lg"
+      class="q-mt-lg q-px-xl"
+      color="primary"
+      @click="runSearch"
+      >
+        Guayabear
+        <template v-slot:loading>
+          <q-spinner-hourglass class="on-left" />
+        </template>
+      </q-btn>
+
     </q-parallax>
 
     <div id="results" v-if="videos.length>0" class="row q-pa-md q-col-gutter-lg">
@@ -75,7 +88,8 @@ export default {
   data () {
     return {
       textSearch: 'I like golden retrievers',
-      videos: []
+      videos: [],
+      loading4: false,
     }
   },
   computed: {
@@ -85,23 +99,41 @@ export default {
   },
   methods: {
     runSearch () {
-      const bar = this.$refs.bar
-      bar.start()
 
-      youtube(this.textSearch).then(results => {
-        this.videos = results
-        this.$refs.bar.stop()
-      })
-        .catch(error => {
-          console.error(error)
-          this.$refs.bar.stop()
-          this.$q.notify({
-            color:    'negative',
-            icon:     'report_problem',
-            message:  'Error en la guayaba',
-            actions: [{ icon: 'close', color: 'white' }]
-          })
+      if(this.textSearch==""){
+
+        this.$q.notify({
+              color:    'yellow-8',
+              textColor: 'black',
+              icon:     'face',
+              message:  'Ingrese el texto a guayabear',
+              actions: [{ icon: 'close', color: 'black' }]
         })
+
+      }else{
+
+        const bar = this.$refs.bar
+        bar.start()
+        this.loading4 = true
+
+        youtube(this.textSearch).then(results => {
+          this.videos = results
+          this.$refs.bar.stop()
+          this.loading4 = false
+        })
+          .catch(error => {
+            console.error(error)
+            this.$refs.bar.stop()
+            this.loading4 = false
+            this.$q.notify({
+              color:    'negative',
+              icon:     'report_problem',
+              message:  'Error en la guayaba',
+              actions: [{ icon: 'close', color: 'white' }]
+            })
+          })
+      }
+
     }
   },
   mounted () {

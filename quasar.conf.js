@@ -58,7 +58,8 @@ module.exports = function (ctx) {
         'QCardSection',
         'QCardActions',
         'QAjaxBar',
-        'QBanner'
+        'QBanner',
+        'QSpinnerHourglass'
       ],
 
       directives: [
